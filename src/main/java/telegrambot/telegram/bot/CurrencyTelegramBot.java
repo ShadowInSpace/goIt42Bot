@@ -1,5 +1,6 @@
 package telegrambot.telegram.bot;
 
+import telegrambot.controller.Controller;
 import telegrambot.telegram.keyboard.Keyboard;
 import telegrambot.user.UserSettings;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -51,6 +52,8 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
         long chat_id = callbackQuery.getMessage().getChatId();
         String call_data = callbackQuery.getData();
         SendMessage message = new SendMessage();
+        Controller controller = new Controller(userSettingsState);
+
 
         switch (call_data) {
             case "/start":
@@ -60,8 +63,10 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
 
             case "get_rate":
                 message.setChatId(chat_id);
-                message.setText("Get info");
+                message.setText(controller.resultMessage());
                 execute(message);
+                message = new Keyboard().mainKeyboard(chat_id);
+                execute(message); // Sending our message object to user
                 break;
 
             case "get_settings":
