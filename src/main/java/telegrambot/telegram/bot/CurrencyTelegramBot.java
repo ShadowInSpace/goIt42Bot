@@ -1,7 +1,7 @@
-package com.jc8pg2.telegrambot.telegram.bot;
+package telegrambot.telegram.bot;
 
-import com.jc8pg2.telegrambot.telegram.keyboard.Keyboard;
-import com.jc8pg2.telegrambot.user.UserSettings;
+import telegrambot.telegram.keyboard.Keyboard;
+import telegrambot.user.UserSettings;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;

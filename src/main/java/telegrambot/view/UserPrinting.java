@@ -1,14 +1,14 @@
-package com.jc8pg2.telegrambot.view;
+package telegrambot.view;
 
 
 
-import com.jc8pg2.telegrambot.currency.bankrates.MonoBankGetRate;
-import com.jc8pg2.telegrambot.currency.bankrates.NationalBankGetRate;
-import com.jc8pg2.telegrambot.currency.bankrates.PrivateBankGetRate;
-import com.jc8pg2.telegrambot.currency.convertion.MonoBankRate;
-import com.jc8pg2.telegrambot.currency.convertion.NationalBankRate;
-import com.jc8pg2.telegrambot.currency.convertion.PrivateBankRate;
-import com.jc8pg2.telegrambot.user.UserSettings;
+import telegrambot.currency.bankrates.MonoBankGetRate;
+import telegrambot.currency.bankrates.NationalBankGetRate;
+import telegrambot.currency.bankrates.PrivateBankGetRate;
+import telegrambot.currency.convertion.MonoBankRate;
+import telegrambot.currency.convertion.NationalBankRate;
+import telegrambot.currency.convertion.PrivateBankRate;
+import telegrambot.user.UserSettings;
 
 import java.util.List;
 

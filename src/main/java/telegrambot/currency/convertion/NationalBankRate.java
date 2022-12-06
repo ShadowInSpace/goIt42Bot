@@ -1,4 +1,4 @@
-package com.jc8pg2.telegrambot.currency.convertion;
+package telegrambot.currency.convertion;
 
 import com.google.gson.annotations.SerializedName;
 

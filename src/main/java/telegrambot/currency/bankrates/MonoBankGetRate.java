@@ -1,8 +1,8 @@
-package com.jc8pg2.telegrambot.currency.bankrates;
+package telegrambot.currency.bankrates;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.jc8pg2.telegrambot.currency.convertion.MonoBankRate;
+import telegrambot.currency.convertion.MonoBankRate;
 
 import java.io.IOException;
 import java.net.URI;

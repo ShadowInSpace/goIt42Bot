@@ -1,7 +1,7 @@
-package com.jc8pg2.telegrambot;
+package telegrambot;
 
 
-import com.jc8pg2.telegrambot.telegram.bot.CurrencyTelegramBot;
+import telegrambot.telegram.bot.CurrencyTelegramBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;

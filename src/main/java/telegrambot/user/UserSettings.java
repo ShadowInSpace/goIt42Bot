@@ -1,4 +1,4 @@
-package com.jc8pg2.telegrambot.user;
+package telegrambot.user;
 
 public class UserSettings {
 

@@ -1,6 +1,6 @@
-package com.jc8pg2.telegrambot.telegram.keyboard;
+package telegrambot.telegram.keyboard;
 
-import com.jc8pg2.telegrambot.user.UserSettings;
+import telegrambot.user.UserSettings;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
