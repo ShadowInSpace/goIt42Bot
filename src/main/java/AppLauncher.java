@@ -1,6 +1,3 @@
-package telegrambot;
-
-
 import telegrambot.telegram.bot.CurrencyTelegramBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;

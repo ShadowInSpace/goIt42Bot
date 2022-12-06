@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/main/java/telegrambot/AppLauncher.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/AppLauncher.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/telegrambot/currency/bankrates/MonoBankGetRate.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/telegrambot/currency/convertion/MonoBankRate.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/telegrambot/telegram/bot/CurrencyTelegramBot.java" charset="UTF-8" />
