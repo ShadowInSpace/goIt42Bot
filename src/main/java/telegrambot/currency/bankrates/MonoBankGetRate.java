@@ -18,8 +18,6 @@ import java.util.Set;
 
 public class MonoBankGetRate {
 
-
-
     public List<MonoBankRate> getRate() {
         URI uri;
         try {
@@ -48,13 +46,12 @@ public class MonoBankGetRate {
                     }
                             .getType());
 
-
             return getUnique(currencies);
         }
         return null;
     }
 
-    public List<MonoBankRate> getUnique(List<MonoBankRate> currencies) {
+    private List<MonoBankRate> getUnique(List<MonoBankRate> currencies) {
 
         List<MonoBankRate> availableCurrency = new ArrayList<>();
         Set<Currency> currency = Currency.getAvailableCurrencies();
@@ -69,7 +66,8 @@ public class MonoBankGetRate {
                     m.setCurrencyCodeB(c.getCurrencyCode());
                 }
             }
-            if (m.getRateBuy() != null & m.getRateSell() != null) {
+            if (m.getRateBuy() != null & m.getRateSell() != null &
+                    m.getCurrencyCodeA().equals("USD") & m.getCurrencyCodeA().equals("EUR")) {
                 availableCurrency.add(m);
             }
         }

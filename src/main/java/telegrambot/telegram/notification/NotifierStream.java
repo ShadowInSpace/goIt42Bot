@@ -15,9 +15,10 @@ public class NotifierStream {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             String notificationTime = userSettings.getNotificationTime() + ":00:00";
-            if (notificationTime.equals(dtf.format(now))){
+            if ("23:30:00".equals(dtf.format(now))){
                 return "notify";
             }
+            System.out.println(dtf.format(now));
             sleep(1000);
         }
     }

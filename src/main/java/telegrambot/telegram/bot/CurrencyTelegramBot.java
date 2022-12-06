@@ -217,7 +217,8 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    public void notificator(CallbackQuery callbackQuery) {
+    private void notificator(CallbackQuery callbackQuery) {
+
         Thread t1 = new Thread(() -> {
             String stream = new NotifierStream().idler(userSettingsState);
             if (stream.equals("notify")) {
@@ -231,6 +232,7 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
                 }
             }
         });
-        t1.start();
+            t1.start();
     }
+
 }

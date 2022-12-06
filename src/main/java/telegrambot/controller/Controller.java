@@ -57,5 +57,4 @@ public class Controller {
     private String roundedRate(String rate){
         return String.format("%." + settings.getPrecession() + "f", Double.parseDouble(rate));
     }
-
 }

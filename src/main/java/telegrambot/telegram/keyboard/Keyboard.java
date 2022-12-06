@@ -82,7 +82,7 @@ public class Keyboard {
         button6.setText("⏱Час оповіщення⏱");
         button6.setCallbackData("get_notification");
 
-        // Main keybord
+        // Main keyboard
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setText("🔙 Назад");
         button.setCallbackData("/start");
@@ -265,8 +265,6 @@ public class Keyboard {
         if(userSettings.getCurrency()[1].equals("EUR")) {
             button1.setText(check_mark + "EUR");
         }
-
-
 
         rowInline1.add(button0);
         rowInline2.add(button1);
