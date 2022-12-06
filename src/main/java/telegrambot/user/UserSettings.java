@@ -3,7 +3,7 @@ package telegrambot.user;
 public class UserSettings {
 
    static   {
-        notificationTime = "9";
+        notificationTime = "off";
         bank = "Privat";
         precession = "3";
         currency = new String[]{"USD", "EUR"};

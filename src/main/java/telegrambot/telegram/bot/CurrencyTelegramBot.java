@@ -1,7 +1,9 @@
 package telegrambot.telegram.bot;
 
+import lombok.SneakyThrows;
 import telegrambot.controller.Controller;
 import telegrambot.telegram.keyboard.Keyboard;
+import telegrambot.telegram.notification.NotifierStream;
 import telegrambot.user.UserSettings;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -10,10 +12,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 
-
-
 public class CurrencyTelegramBot extends TelegramLongPollingBot {
     private final UserSettings userSettingsState = new UserSettings();
+    private final Controller controller = new Controller(userSettingsState);
 
     public String getBotUsername() {
         return "try_to_not_find_bot";
@@ -46,14 +47,13 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
             }
         }
         System.out.println(update.getMessage().getDate().longValue());
+
     }
 
     private void handleCallback(CallbackQuery callbackQuery) throws TelegramApiException {
         long chat_id = callbackQuery.getMessage().getChatId();
         String call_data = callbackQuery.getData();
         SendMessage message = new SendMessage();
-        Controller controller = new Controller(userSettingsState);
-
 
         switch (call_data) {
             case "/start":
@@ -163,48 +163,74 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
             case "9":
                 userSettingsState.setNotificationTime("9");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "10":
                 userSettingsState.setNotificationTime("10");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "11":
                 userSettingsState.setNotificationTime("11");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "12":
                 userSettingsState.setNotificationTime("12");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "13":
                 userSettingsState.setNotificationTime("13");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "14":
                 userSettingsState.setNotificationTime("14");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "15":
                 userSettingsState.setNotificationTime("15");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "16":
                 userSettingsState.setNotificationTime("16");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "17":
                 userSettingsState.setNotificationTime("17");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "18":
                 userSettingsState.setNotificationTime("18");
                 execute(message);
+                notificator(callbackQuery);
                 break;
             case "off":
                 userSettingsState.setNotificationTime("off");
                 execute(message);
                 break;
-
         }
+    }
+
+    public void notificator(CallbackQuery callbackQuery) {
+        Thread t1 = new Thread(() -> {
+            String stream = new NotifierStream().idler(userSettingsState);
+            if (stream.equals("notify")) {
+                SendMessage message = new SendMessage();
+                message.setText(controller.resultMessage());
+                message.setChatId(callbackQuery.getMessage().getChatId());
+                try {
+                    execute(message);
+                } catch (TelegramApiException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        t1.start();
     }
 }
