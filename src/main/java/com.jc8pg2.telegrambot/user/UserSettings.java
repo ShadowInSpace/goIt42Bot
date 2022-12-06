@@ -5,7 +5,7 @@ public class UserSettings {
    static   {
         notificationTime = "9";
         bank = "Privat";
-        precession = "-3";
+        precession = "3";
         currency = new String[]{"USD", "EUR"};
     }
     private static String notificationTime; // 9 - 18, off

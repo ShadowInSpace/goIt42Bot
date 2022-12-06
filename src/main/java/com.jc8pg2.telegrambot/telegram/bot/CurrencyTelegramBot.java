@@ -74,20 +74,20 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
                 execute(message);
                 break;
 
-            case "-2":
-                userSettingsState.setPrecession("-2");
+            case "2":
+                userSettingsState.setPrecession("2");
                 message = new Keyboard().settingsKeyboard(chat_id);
                 execute(message);
                 break;
 
-            case "-3":
-                userSettingsState.setPrecession("-3");
+            case "3":
+                userSettingsState.setPrecession("3");
                 message = new Keyboard().settingsKeyboard(chat_id);
                 execute(message);
                 break;
 
-            case "-4":
-                userSettingsState.setPrecession("-4");
+            case "4":
+                userSettingsState.setPrecession("4");
                 message = new Keyboard().settingsKeyboard(chat_id);
                 execute(message);
                 break;

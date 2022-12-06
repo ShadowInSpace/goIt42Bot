@@ -144,13 +144,13 @@ public class Keyboard {
         button9.setCallbackData("4");
 
         switch (userSettings.getPrecession()) {
-            case "-2":
+            case "2":
                 button7.setText(check_mark + " 2");
                 break;
-            case "-3":
+            case "3":
                 button8.setText(check_mark + " 3");
                 break;
-            case "-4":
+            case "4":
                 button9.setText(check_mark + " 4");
                 break;
         }
