@@ -129,29 +129,29 @@ public class Keyboard {
 
         // -2 button
         InlineKeyboardButton button7 = new InlineKeyboardButton();
-        button7.setText("-2");
-        button7.setCallbackData("-2");
+        button7.setText("2");
+        button7.setCallbackData("2");
 
         // -3 button
         InlineKeyboardButton button8 = new InlineKeyboardButton();
-        button8.setText("-3");
-        button8.setCallbackData("-3");
+        button8.setText("3");
+        button8.setCallbackData("3");
 
 
         // -4 button
         InlineKeyboardButton button9 = new InlineKeyboardButton();
-        button9.setText("-4");
-        button9.setCallbackData("-4");
+        button9.setText("4");
+        button9.setCallbackData("4");
 
         switch (userSettings.getPrecession()) {
             case "-2":
-                button7.setText(check_mark + " -2");
+                button7.setText(check_mark + " 2");
                 break;
             case "-3":
-                button8.setText(check_mark + " -3");
+                button8.setText(check_mark + " 3");
                 break;
             case "-4":
-                button9.setText(check_mark + " -4");
+                button9.setText(check_mark + " 4");
                 break;
         }
 
