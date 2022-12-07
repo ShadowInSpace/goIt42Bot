@@ -1,5 +1,6 @@
 package telegrambot.telegram.bot;
 
+import lombok.SneakyThrows;
 import telegrambot.controller.Controller;
 import telegrambot.telegram.keyboard.Keyboard;
 import telegrambot.user.UserSettings;
@@ -25,14 +26,16 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+
+        System.out.println("Work");
         if (update.hasMessage() && update.getMessage().hasText()) {
             long chat_id = update.getMessage().getChatId();
-
+            userSettingsState.setChat_id(update.getMessage().getChatId());
             if (update.getMessage().getText().equals("/start")) {
                 // Create a message  object
                 SendMessage message;
                 message = new Keyboard().mainKeyboard(chat_id);
-                userSettingsState.setChat_id(chat_id);
+
                 try {
                     execute(message); // Sending our message object to user
                 } catch (TelegramApiException e) {
@@ -213,13 +216,19 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    public void notifyer() {
-        SendMessage message;
-        message = new Keyboard().mainKeyboard(userSettingsState.getChat_id());
+    @SneakyThrows
+    public void notifier() {
+
+        String s = controller.resultMessage();
+        SendMessage message = new SendMessage();
+        message.setText(s);
+        message.setChatId(userSettingsState.getChat_id());
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        SendMessage message1 = new  Keyboard().mainKeyboard(userSettingsState.getChat_id());
+        execute(message1);
     }
 }

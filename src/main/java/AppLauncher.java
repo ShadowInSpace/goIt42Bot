@@ -4,11 +4,12 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import telegrambot.telegram.notification.NotifierStream;
+import telegrambot.user.UserSettings;
 
 
 public class AppLauncher {
     public static void main(String[] args) {
-
+        NotifierStream stream =  new NotifierStream();
         TelegramBotsApi botsApi;
         try {
             botsApi = new TelegramBotsApi(DefaultBotSession.class);
@@ -16,17 +17,6 @@ public class AppLauncher {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                new NotifierStream().idler();
-            }
-        });
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        stream.run();
     }
 }

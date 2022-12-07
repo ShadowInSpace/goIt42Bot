@@ -2,17 +2,18 @@ package telegrambot.user;
 
 public class UserSettings {
 
-   static   {
+    static {
         notificationTime = "off";
         bank = "Privat";
         precession = "3";
         currency = new String[]{"USD", "EUR"};
     }
+
     private static String notificationTime; // 9 - 18, off
     private static String bank; // Privat, NBU, Mono
     private static String precession; // -2,-3,-4
     private static final String[] currency; //"EUR", "USD", "null"
-    private long chat_id;
+    private static long chat_id;
 
     public String getNotificationTime() {
         return notificationTime;
@@ -45,7 +46,8 @@ public class UserSettings {
     public void setCurrency0(String currency) {
         UserSettings.currency[0] = currency;
     }
-    public void setCurrency1(String currency){
+
+    public void setCurrency1(String currency) {
         UserSettings.currency[1] = currency;
     }
 
@@ -54,6 +56,6 @@ public class UserSettings {
     }
 
     public void setChat_id(long chat_id) {
-        this.chat_id = this.chat_id;
+        UserSettings.chat_id = chat_id;
     }
 }
