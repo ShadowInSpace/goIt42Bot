@@ -1,9 +1,7 @@
 package telegrambot.telegram.bot;
 
-import lombok.SneakyThrows;
 import telegrambot.controller.Controller;
 import telegrambot.telegram.keyboard.Keyboard;
-import telegrambot.telegram.notification.NotifierStream;
 import telegrambot.user.UserSettings;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,15 +9,16 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 
 public class CurrencyTelegramBot extends TelegramLongPollingBot {
     private final UserSettings userSettingsState = new UserSettings();
-    private final Controller controller = new Controller(userSettingsState);
-
+    private final Controller controller = new Controller();
     public String getBotUsername() {
         return "try_to_not_find_bot";
     }
-
     public String getBotToken() {
         return "5940494263:AAGtrZMoFoZjIH5ZPI4_ZPRhT2RvUNC9nJY";
     }
@@ -28,10 +27,12 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             long chat_id = update.getMessage().getChatId();
+
             if (update.getMessage().getText().equals("/start")) {
                 // Create a message  object
                 SendMessage message;
                 message = new Keyboard().mainKeyboard(chat_id);
+                userSettingsState.setChat_id(chat_id);
                 try {
                     execute(message); // Sending our message object to user
                 } catch (TelegramApiException e) {
@@ -63,7 +64,11 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
 
             case "get_rate":
                 message.setChatId(chat_id);
-                message.setText(controller.resultMessage());
+                try {
+                    message.setText(controller.resultMessage());
+                } catch (IOException | InterruptedException | URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
                 execute(message);
                 message = new Keyboard().mainKeyboard(chat_id);
                 execute(message); // Sending our message object to user
@@ -163,66 +168,58 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
             case "9":
                 userSettingsState.setNotificationTime("9");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "10":
                 userSettingsState.setNotificationTime("10");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "11":
                 userSettingsState.setNotificationTime("11");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "12":
                 userSettingsState.setNotificationTime("12");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "13":
                 userSettingsState.setNotificationTime("13");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "14":
                 userSettingsState.setNotificationTime("14");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "15":
                 userSettingsState.setNotificationTime("15");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "16":
                 userSettingsState.setNotificationTime("16");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "17":
                 userSettingsState.setNotificationTime("17");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "18":
                 userSettingsState.setNotificationTime("18");
                 execute(message);
-                notificator(callbackQuery);
                 break;
             case "off":
                 userSettingsState.setNotificationTime("off");
                 execute(message);
                 break;
+            default:
         }
     }
 
-    private void notificator(CallbackQuery callbackQuery) {
-
-        Thread t1 = new Thread(() -> {
-            String stream = new NotifierStream().idler(userSettingsState, callbackQuery);
-        });
-            t1.start();
+    public void notifyer() {
+        SendMessage message;
+        message = new Keyboard().mainKeyboard(userSettingsState.getChat_id());
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }

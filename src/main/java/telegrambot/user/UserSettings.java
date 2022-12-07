@@ -12,6 +12,7 @@ public class UserSettings {
     private static String bank; // Privat, NBU, Mono
     private static String precession; // -2,-3,-4
     private static final String[] currency; //"EUR", "USD", "null"
+    private long chat_id;
 
     public String getNotificationTime() {
         return notificationTime;
@@ -46,5 +47,13 @@ public class UserSettings {
     }
     public void setCurrency1(String currency){
         UserSettings.currency[1] = currency;
+    }
+
+    public long getChat_id() {
+        return chat_id;
+    }
+
+    public void setChat_id(long chat_id) {
+        this.chat_id = this.chat_id;
     }
 }

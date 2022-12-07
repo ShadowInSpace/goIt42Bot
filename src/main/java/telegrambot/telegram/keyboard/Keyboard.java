@@ -111,7 +111,6 @@ public class Keyboard {
         SendMessage message = new SendMessage();
         message.setChatId(chat_id);
         message.setText("Налаштування");
-
         message.setReplyMarkup(markupInline);
 
         return message;
