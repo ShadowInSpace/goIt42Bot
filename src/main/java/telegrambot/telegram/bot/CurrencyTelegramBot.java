@@ -220,17 +220,7 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
     private void notificator(CallbackQuery callbackQuery) {
 
         Thread t1 = new Thread(() -> {
-            String stream = new NotifierStream().idler(userSettingsState);
-            if (stream.equals("notify")) {
-                SendMessage message = new SendMessage();
-                message.setText(controller.resultMessage());
-                message.setChatId(callbackQuery.getMessage().getChatId());
-                try {
-                    execute(message);
-                } catch (TelegramApiException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            String stream = new NotifierStream().idler(userSettingsState, callbackQuery);
         });
             t1.start();
     }

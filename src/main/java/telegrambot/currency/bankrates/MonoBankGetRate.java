@@ -66,8 +66,7 @@ public class MonoBankGetRate {
                     m.setCurrencyCodeB(c.getCurrencyCode());
                 }
             }
-            if (m.getRateBuy() != null & m.getRateSell() != null &
-                    m.getCurrencyCodeA().equals("USD") & m.getCurrencyCodeA().equals("EUR")) {
+            if (m.getRateBuy() != null & m.getRateSell() != null) {
                 availableCurrency.add(m);
             }
         }
