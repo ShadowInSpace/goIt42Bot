@@ -16,7 +16,7 @@ public class BankClient {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .build();
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                return response.body();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
     }
 }

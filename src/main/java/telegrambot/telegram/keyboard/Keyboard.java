@@ -261,7 +261,7 @@ public class Keyboard {
         if (userSettings.getCurrency()[0].equals("USD")) {
             button0.setText(check_mark + " USD");
         }
-        if(userSettings.getCurrency()[1].equals("EUR")) {
+        if (userSettings.getCurrency()[1].equals("EUR")) {
             button1.setText(check_mark + "EUR");
         }
 

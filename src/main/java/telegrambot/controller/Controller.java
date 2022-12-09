@@ -35,14 +35,14 @@ public class Controller {
                             .append(roundedRate(dataBankRate.getSell()));
                 }
             }
-            if(currencyName[0].equals(currencyName[1])) {
+            if (currencyName[0].equals(currencyName[1])) {
                 response = new StringBuilder("Виберіть будь ласка валюту");
             }
         }
         return response.toString();
     }
 
-    private String changeNameBank(){
+    private String changeNameBank() {
         String resultNameBank = null;
         switch (settings.getBank()) {
             case PRIVATE:
@@ -57,11 +57,12 @@ public class Controller {
         }
         return resultNameBank;
     }
-    private String roundedRate(BigDecimal rate){
+
+    private String roundedRate(BigDecimal rate) {
         String roundedRate;
-        if(!(rate == null)){
+        if (!(rate == null)) {
             roundedRate = String.format("%." + settings.getPrecession() + "f", rate);
-        }else {
+        } else {
             roundedRate = "Дана операція не проводиться";
         }
         return roundedRate;

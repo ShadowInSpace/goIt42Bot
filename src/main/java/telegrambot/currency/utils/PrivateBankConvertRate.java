@@ -16,14 +16,13 @@ public class PrivateBankConvertRate {
         JsonArray jsonArray = ConvertRate.responseToJsonArray
                 ("https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5");
         int count = 0;
-        Currency currency = new Currency();
         while (count < jsonArray.size()) {
             JsonObject jsonObject = jsonArray.get(count++).getAsJsonObject();
             PrivateBankRate privat = createPrivateBankRateFromJson(jsonObject);
             listCurrencies.add(setCurrency(privat));
 
+        }
     }
-}
 
     protected static Currency setCurrency(PrivateBankRate bank) {
         Currency currency = new Currency();
@@ -44,4 +43,4 @@ public class PrivateBankConvertRate {
 
         return privat;
     }
-    }
+}

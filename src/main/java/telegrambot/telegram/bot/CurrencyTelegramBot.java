@@ -1,6 +1,5 @@
 package telegrambot.telegram.bot;
 
-import lombok.SneakyThrows;
 import telegrambot.controller.Controller;
 import telegrambot.telegram.keyboard.Keyboard;
 import telegrambot.user.UserSettings;
@@ -17,9 +16,11 @@ import java.net.URISyntaxException;
 public class CurrencyTelegramBot extends TelegramLongPollingBot {
     private final UserSettings userSettingsState = new UserSettings();
     private final Controller controller = new Controller();
+
     public String getBotUsername() {
         return "try_to_not_find_bot";
     }
+
     public String getBotToken() {
         return "5940494263:AAGtrZMoFoZjIH5ZPI4_ZPRhT2RvUNC9nJY";
     }
@@ -27,7 +28,6 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
 
-        System.out.println("Work");
         if (update.hasMessage() && update.getMessage().hasText()) {
             long chat_id = update.getMessage().getChatId();
             userSettingsState.setChat_id(update.getMessage().getChatId());
@@ -216,10 +216,15 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    @SneakyThrows
+
     public void notifier() {
 
-        String s = controller.resultMessage();
+        String s;
+        try {
+            s = controller.resultMessage();
+        } catch (IOException | URISyntaxException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         SendMessage message = new SendMessage();
         message.setText(s);
         message.setChatId(userSettingsState.getChat_id());
@@ -228,7 +233,11 @@ public class CurrencyTelegramBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-        SendMessage message1 = new  Keyboard().mainKeyboard(userSettingsState.getChat_id());
-        execute(message1);
+        SendMessage message1 = new Keyboard().mainKeyboard(userSettingsState.getChat_id());
+        try {
+            execute(message1);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
