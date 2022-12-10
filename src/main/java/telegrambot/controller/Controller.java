@@ -21,18 +21,10 @@ public class Controller {
         for (Currency dataBankRate : ConvertRate.allCurrencyToList()) {
             if (settings.getBank().equals(dataBankRate.getBankName())) {
                 if (dataBankRate.getCurrencyName().equals(currencyName[0])) {
-                    response
-                            .append("\nUSD/UAH\n" + "Покупка: ")
-                            .append(roundedRate(dataBankRate.getBuy()))
-                            .append("\nПродажа: ")
-                            .append(roundedRate(dataBankRate.getSell()));
+                    response.append("\nUSD/UAH\n" + "Покупка: ").append(roundedRate(dataBankRate.getBuy())).append("\nПродажа: ").append(roundedRate(dataBankRate.getSell()));
                 }
                 if (dataBankRate.getCurrencyName().equals(currencyName[1])) {
-                    response
-                            .append("\nEUR/UAH\n" + "Покупка: ")
-                            .append(roundedRate(dataBankRate.getBuy()))
-                            .append("\nПродажа: ")
-                            .append(roundedRate(dataBankRate.getSell()));
+                    response.append("\nEUR/UAH\n" + "Покупка: ").append(roundedRate(dataBankRate.getBuy())).append("\nПродажа: ").append(roundedRate(dataBankRate.getSell()));
                 }
             }
             if (currencyName[0].equals(currencyName[1])) {
@@ -67,6 +59,4 @@ public class Controller {
         }
         return roundedRate;
     }
-
-
 }
